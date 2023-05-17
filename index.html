@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hybris | Soon™</title>
+    <link rel="shortcut icon" href="favicon/black.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hybrismc.dev" />
+    <meta property="og:site_name" content="Hybris" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:image"
+      content="https://cdn.discordapp.com/banners/926918030385098764/4973c09fb92f6cf805d881dade62553d.webp?size=1024"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        color: #303030;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #cfcfcf;
+        }
+      }
+
+      img#wallpaper {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+
+      img#logo {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 17vw;
+        height: 17vw;
+        min-width: 200px;
+        min-height: 200px;
+        object-fit: contain;
+      }
+
+      h1 {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        user-select: none;
+        font-size: 5em;
+      }
+
+      @media screen and (max-width: 500px) {
+        h1 {
+          font-size: 4em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Do you really think we were leaving? -->
+    <!-- Enjoy the wait :) -->
+    <img id="wallpaper" alt="Hybris' wallpaper" draggable="false" />
+    <img id="logo" alt="Hybris' logo" draggable="false" />
+    <h1>Soon™</h1>
+
+    <script>
+      function adaptToColorScheme(dark) {
+        const filename = dark ? 'black' : 'white';
+        const oppositeFilename = dark ? 'white' : 'black';
+
+        document
+          .querySelector('link[rel="shortcut icon"]')
+          .setAttribute('href', `favicon/${oppositeFilename}.svg`);
+
+        document
+          .querySelector('img#wallpaper')
+          .setAttribute('src', `wallpaper/${filename}.png`);
+
+        document
+          .querySelector('img#logo')
+          .setAttribute('src', `favicon/${oppositeFilename}.svg`);
+      }
+
+      const prefersDarkScheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      );
+      adaptToColorScheme(prefersDarkScheme.matches);
+      prefersDarkScheme.addEventListener('change', (event) =>
+        adaptToColorScheme(event.matches)
+      );
+    </script>
+  </body>
+</html>
